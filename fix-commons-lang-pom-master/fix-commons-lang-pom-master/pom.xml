@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hcsp</groupId>
+  <artifactId>commons-lang3</artifactId>
+  <version>3.10-SNAPSHOT</version>
+  <name>Apache Commons Lang</name>
+
+  <inceptionYear>2001</inceptionYear>
+  <description>
+  Apache Commons Lang, a package of Java utility classes for the
+  classes that are in java.lang's hierarchy, or are considered to be so
+  standard as to justify existence in java.lang.
+  </description>
+
+  <url>https://commons.apache.org/proper/commons-lang/</url>
+
+  <issueManagement>
+    <system>jira</system>
+    <url>https://issues.apache.org/jira/browse/LANG</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:http://git-wip-us.apache.org/repos/asf/commons-lang.git</connection>
+    <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-lang.git</developerConnection>
+    <url>https://git-wip-us.apache.org/repos/asf?p=commons-lang.git</url>
+    <tag>commons-lang-3.9</tag>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    </repository>
+  </repositories>
+
+  <!-- Lang should depend on very little -->
+  <dependencies>
+    <!-- testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.5.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <distributionManagement>
+    <site>
+      <id>apache.website</id>
+      <name>Apache Commons Site</name>
+      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-lang/</url>
+    </site>
+  </distributionManagement>
+
+  <properties>
+    <argLine>-Xmx512m</argLine>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <!--
+       This is also  used to generate download_xxx file name.
+       To override this when generating the download page:
+
+       mvn commons:download-page -Dcommons.componentid=lang
+
+       The above seems to change the download page name but not any other
+       properties that depend on the componentid.
+
+       N.B. The componentid is also used by the parent pom as part of the OSGI symbolic name.
+    -->
+    <commons.componentid>lang</commons.componentid>
+    <commons.packageId>lang3</commons.packageId>
+    <commons.module.name>org.apache.commons.lang3</commons.module.name>
+    <!-- Current 3.x release series -->
+    <commons.release.version>3.9</commons.release.version>
+    <commons.release.desc>(Java 8+)</commons.release.desc>
+    <!-- Previous 2.x release series -->
+    <commons.release.2.version>2.6</commons.release.2.version>
+    <commons.release.2.desc>(Requires Java 1.2 or later)</commons.release.2.desc>
+    <!-- Override generated name -->
+    <commons.release.2.name>commons-lang-${commons.release.2.version}</commons.release.2.name>
+    <commons.jira.id>LANG</commons.jira.id>
+    <commons.jira.pid>12310481</commons.jira.pid>
+
+    <commons.site.path>lang</commons.site.path>
+    <commons.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/commons/content/proper/commons-lang</commons.scmPubUrl>
+    <commons.scmPubCheckoutDirectory>site-content</commons.scmPubCheckoutDirectory>
+    <commons.encoding>utf-8</commons.encoding>
+
+    <checkstyle.plugin.version>3.0.0</checkstyle.plugin.version>
+    <checkstyle.version>8.20</checkstyle.version>
+
+    <spotbugs.plugin.version>3.1.11</spotbugs.plugin.version>
+    <japicmp.skip>false</japicmp.skip>
+
+    <!-- JMH Benchmark related properties, version, target compiler and name of the benchmarking uber jar. -->
+    <jmh.version>1.21</jmh.version>
+    <uberjar.name>benchmarks</uberjar.name>
+
+    <commons.jacoco.version>0.8.4</commons.jacoco.version>
+    <commons.surefire.version>3.0.0-M3</commons.surefire.version>
+    <commons.javadoc.version>3.1.0</commons.javadoc.version>
+
+    <!-- generate report even if there are binary incompatible changes -->
+    <commons.japicmp.breakBuildOnBinaryIncompatibleModifications>false</commons.japicmp.breakBuildOnBinaryIncompatibleModifications>
+    <commons.japicmp.version>0.13.1</commons.japicmp.version>
+
+    <!-- Commons Release Plugin -->
+    <commons.bc.version>3.8.1</commons.bc.version>
+    <commons.rc.version>RC2</commons.rc.version>
+    <commons.release.isDistModule>true</commons.release.isDistModule>
+    <commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/lang</commons.distSvnStagingUrl>
+    <commons.releaseManagerName>Rob Tompkins</commons.releaseManagerName>
+    <commons.releaseManagerKey>B6E73D84EA4FCC47166087253FAAD2CD5ECBB314</commons.releaseManagerKey>
+  </properties>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>plain</id>
+            <configuration>
+              <includes>
+                <include>**/*Test.java</include>
+              </includes>
+              <runOrder>random</runOrder>
+            </configuration>
+          </execution>
+          <!-- <execution> <id>security-manager-test</id> <phase>integration-test</phase> <goals> <goal>test</goal> </goals> <configuration>
+            <includes> <include>**/*Test.java</include> </includes> <argLine>-Djava.security.manager -Djava.security.policy=${basedir}/src/test/resources/java.policy</argLine>
+            </configuration> </execution> -->
+        </executions>
+      </plugin>
+    </plugins>
+
+  </build>
+</project>
