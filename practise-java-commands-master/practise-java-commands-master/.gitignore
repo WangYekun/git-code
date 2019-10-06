@@ -1,0 +1,13 @@
+.idea/
+.gradle/
+build/
+out/
+target/
+*.iml
+
+read-env-variable-system-property/*
+compile-run-with-classpath/*
+system-out-system-err/*
+!read-env-variable-system-property/solution.sh
+!compile-run-with-classpath/solution.sh
+!system-out-system-err/solution.sh

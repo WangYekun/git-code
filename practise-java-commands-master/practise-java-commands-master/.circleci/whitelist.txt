@@ -1,0 +1,3 @@
+read-env-variable-system-property/solution.sh
+compile-run-with-classpath/solution.sh
+system-out-system-err/solution.sh
